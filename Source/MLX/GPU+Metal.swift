@@ -171,6 +171,17 @@ public enum GPU {
         Memory.clearCache()
     }
 
+    /// Set a custom path to the mlx.metallib file.
+    ///
+    /// Must be called before any MLX operation (e.g., before `Pipeline.load()`).
+    /// Use this when running inside a plugin bundle where the default search paths
+    /// don't apply.
+    ///
+    /// - Parameter path: Absolute path to `mlx.metallib`
+    public static func setMetallibPath(_ path: String) {
+        mlx_metal_set_metallib_path(path)
+    }
+
     /// Start capturing a metal trace into the given file.
     ///
     /// > There are several requirements for this to be used.
